@@ -1,9 +1,11 @@
 vista\medicos\Ingresar$1.class
 vista\PantallaPrincipal$6.class
+vista\citas\Ingresar.class
 com\mycompany\prycitasmedicas\PryCitasMedicas.class
 modelo\PacienteModelo.class
 vista\PantallaPrincipal$3.class
 vista\especialidades\Ingresar.class
+vista\PantallaPrincipal$8.class
 vista\PantallaPrincipal$5.class
 vista\medicos\Listado.class
 vista\PantallaPrincipal.class

@@ -30,4 +30,17 @@ public class MedicoControlador {
     public ArrayList<MedicoModelo> listadoCompleto(){
         return medicoModelos;
     }
+    
+    
+    public ArrayList<MedicoModelo> listadoPorEspecialidad(String n_e){
+        
+         ArrayList<MedicoModelo> nuevoListado=new ArrayList<>();
+        
+        for (MedicoModelo md : medicoModelos) {
+            if(md.getEspecialidadModelo().getNombre().contains(n_e)){
+                nuevoListado.add(md);
+            }
+        }
+        return nuevoListado;
+    }
 }

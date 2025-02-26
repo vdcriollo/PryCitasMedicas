@@ -42,7 +42,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menu_ingresar_medico = new javax.swing.JMenuItem();
         menu_listado_medico = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        menu_ingreasar_citas = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,8 +123,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         jMenu5.setText("CITAS");
 
-        jMenuItem7.setText("INGRESAR");
-        jMenu5.add(jMenuItem7);
+        menu_ingreasar_citas.setText("INGRESAR");
+        menu_ingreasar_citas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_ingreasar_citasActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menu_ingreasar_citas);
 
         jMenuItem8.setText("LISTAR");
         jMenu5.add(jMenuItem8);
@@ -180,6 +185,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         contenedor_principal.add(new vista.medicos.Listado()).setVisible(true);
     }//GEN-LAST:event_menu_listado_medicoActionPerformed
 
+    private void menu_ingreasar_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ingreasar_citasActionPerformed
+        contenedor_principal.removeAll();
+        contenedor_principal.add(new vista.citas.Ingresar()).setVisible(true);
+    }//GEN-LAST:event_menu_ingreasar_citasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,8 +233,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem menu_ingreasar_citas;
     private javax.swing.JMenuItem menu_ingresar_especialidad;
     private javax.swing.JMenuItem menu_ingresar_medico;
     private javax.swing.JMenuItem menu_ingresar_paciente;
