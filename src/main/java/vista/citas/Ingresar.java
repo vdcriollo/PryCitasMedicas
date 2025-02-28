@@ -1,9 +1,12 @@
 
 package vista.citas;
 
+import controlador.CitasController;
 import controlador.EspecialidadControlador;
 import controlador.MedicoControlador;
 import controlador.PacienteCoontrolador;
+import javax.swing.JOptionPane;
+import modelo.CitaModelo;
 import modelo.EspecialidadModelo;
 import modelo.MedicoModelo;
 import modelo.PacienteModelo;
@@ -13,6 +16,8 @@ public class Ingresar extends javax.swing.JInternalFrame {
     PacienteCoontrolador  pc=PacienteCoontrolador.getInstacia();
     EspecialidadControlador ec=EspecialidadControlador.getInstancia();
     MedicoControlador mc =MedicoControlador.getInstacia();
+    
+    CitasController cc=CitasController.getInstancia();
     
     public Ingresar() {
         initComponents();
@@ -97,6 +102,11 @@ public class Ingresar extends javax.swing.JInternalFrame {
         jLabel8.setText("hh:mm");
 
         btn_guardar.setText("GENERAR TURNO");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,6 +183,45 @@ public class Ingresar extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        // paciente
+        String nombrePaciente=cbx_pacientes.getSelectedItem().toString();
+        String pacientePartes[]=nombrePaciente.split(" ");
+        String cedula=pacientePartes[0];
+        PacienteModelo pm = pc.obtenerCedula(cedula);
+        
+        // medico
+        String nombreMedico=cbx_medicos.getSelectedItem().toString();
+        String medicosPartes[]=nombreMedico.split(" ");
+        String cedula_m=medicosPartes[0];
+        MedicoModelo mm = mc.obtenerCedula(cedula_m);
+        
+        // especialidad
+        EspecialidadModelo em =  mm.getEspecialidadModelo();
+        
+        CitaModelo cm= cc.guardar(
+                pm, 
+                mm, 
+                em,
+     txt_descripcion.getText(),
+          txt_fecha.getText(),
+           txt_hora.getText()
+        );
+        
+        JOptionPane.showMessageDialog(
+                this,
+                "CITA INGRESAdo PARA LA "+
+                 cm.getFecha()+
+                 " EN LA "+
+                 cm.getHora()+
+                 " CON EL MEDICO "+
+                 cm.getMm().getNombres()+
+                 " Y LA ESPECIALIDAD "+
+                cm.getEm().getNombre()
+        );
+        
+    }//GEN-LAST:event_btn_guardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

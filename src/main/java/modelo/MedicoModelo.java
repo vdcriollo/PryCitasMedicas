@@ -18,5 +18,4 @@ public class MedicoModelo extends PacienteModelo{
         this.especialidadModelo = especialidadModelo;
     }
     
-    
 }

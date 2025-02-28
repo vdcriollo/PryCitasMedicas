@@ -43,4 +43,13 @@ public class MedicoControlador {
         }
         return nuevoListado;
     }
+    
+    public MedicoModelo obtenerCedula(String cedula){
+        for (MedicoModelo mm : medicoModelos) {
+            if(mm.getCedula().equals(cedula)){
+                return mm;
+            }
+        }
+        return null;
+    }
 }
